@@ -10,9 +10,17 @@ namespace JakupovicNL.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ThankYou(
+            [Bind("Name, EmailAddress, Message")]EmailForm form)
+        {
+            return View(form);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,7 +1,38 @@
 ﻿@{
-    ViewData["Title"] = "";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+@model JakupovicNL.Models.EmailForm
+
+<div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+    </div>
+    <table width=100% height=100% cellpadding="40">
+        <form enctype="multipart/form-data"
+            asp-controller="Home"
+            asp-action="ThankYou"
+            method="POST">
+            <tr>
+                <td colspan="2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </td>
+            </tr>
+            <tr>
+                <td width="30%"><label asp-for="Name"></label></td>
+                <td width="70%"><input asp-for="Name" type="text"/></td>
+            </tr>
+            <tr>
+                <td width="30%"><label asp-for="EmailAddress"></label></td>
+                <td width="70%"><input asp-for="EmailAddress" type="text"/></td>
+            </tr>
+            <tr>
+                <td width="30%"><label asp-for="Message"></label></td>
+                <td width="70%"><input asp-for="Message" type="text"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Send!"/></td>
+            </tr>
+        </form>
+    </table>
 </div>
