@@ -16,11 +16,20 @@ namespace JakupovicNL.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult ThankYou(
-            [Bind("Name, EmailAddress, Message")]EmailForm form)
+        [HttpGet]
+        public IActionResult EmailForm()
         {
-            return View(form);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EmailForm(EmailForm form)
+        {
+            if(!ModelState.IsValid) {
+                return Index();
+            }
+            form.Id = new Guid();
+            return View("ThankYou", form);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
