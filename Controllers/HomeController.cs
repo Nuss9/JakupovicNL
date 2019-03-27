@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using JakupovicNL.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace JakupovicNL.Controllers
 {
@@ -30,12 +31,19 @@ namespace JakupovicNL.Controllers
         }
 
         [HttpPost]
-        public IActionResult EmailForm(EmailForm form)
+        public async Task<IActionResult> EmailForm(EmailForm form)
         {
             if(!ModelState.IsValid) {
-                return Index();
+                return View("EmailForm", form);
             }
-            form.Id = new Guid();
+
+            form.Id = Guid.NewGuid();
+            var response = await mailer.SendEmail(form);
+
+            if(response.StatusCode.ToString() != "Accepted"){
+                return View("Oops");
+            }
+
             return View("ThankYou", form);
         }
 
