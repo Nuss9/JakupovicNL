@@ -10,6 +10,13 @@ namespace JakupovicNL.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IMailer mailer;
+
+        public HomeController(IMailer mailer)
+        {
+            this.mailer  = mailer;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
