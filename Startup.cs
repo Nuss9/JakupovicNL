@@ -14,6 +14,7 @@ namespace JakupovicNL
 {
     public class Startup
     {
+        public static string _sendgridApiKey = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,8 +32,8 @@ namespace JakupovicNL
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            _sendgridApiKey = Configuration["SendgridApiKey"];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
