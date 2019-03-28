@@ -14,8 +14,7 @@ namespace JakupovicNL
 
 		public Mailer()
 		{
-			//_apiKey = Environment.GetEnvironmentVariable(Startup._sendgridApiKey);
-			_apiKey = "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";
+			_apiKey = Environment.GetEnvironmentVariable(Startup._sendgridApiKey);
             _client = new SendGridClient(_apiKey);
 		}
 
