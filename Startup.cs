@@ -14,7 +14,6 @@ namespace JakupovicNL
 {
     public class Startup
     {
-        public static string _sendgridApiKey = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,7 +32,6 @@ namespace JakupovicNL
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            _sendgridApiKey = Configuration["SendgridApiKey"];
             services.AddScoped<IMailer, Mailer>();
         }
 
