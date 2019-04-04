@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using JakupovicNL.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
@@ -9,12 +10,14 @@ namespace JakupovicNL
 {
 	public class Mailer : IMailer
 	{
+		public IConfiguration Configuration { get; set; }
 		private readonly string _apiKey;
 		private readonly SendGridClient _client;
 
-		public Mailer()
+		public Mailer(IConfiguration config)
 		{
-			_apiKey = Environment.GetEnvironmentVariable(Startup._sendgridApiKey);
+			Configuration = config;
+			_apiKey = Configuration["Sendgrid:ApiKey"];
 			_client = new SendGridClient(_apiKey);
 		}
 
