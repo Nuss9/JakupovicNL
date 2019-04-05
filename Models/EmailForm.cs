@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JakupovicNL.Models
 {
@@ -10,18 +12,20 @@ namespace JakupovicNL.Models
 		[Required]
 		[MinLength(2)]
 		[MaxLength(50)]
-		[Display(Name = "You name: ")]
+		[Display(Name = "Your name: ")]
 		public string Name { get; set; }
 
 		[Required]
 		[RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
-		[Display(Name = "You email address (for cc and replies): ")]
+		[Display(Name = "Your email address: ")]
 		public string EmailAddress { get; set; }
 
-		[Required]
+		[Display(Name = "Select your console:")]
+		public string Console { get; set; }
+
 		[MinLength(2)]
 		[MaxLength(50)]
-		[Display(Name = "Your message: ")]
+		[Display(Name = "Additional message: ")]
 		public string Message { get; set; }
 
 	}
