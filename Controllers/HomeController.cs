@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using JakupovicNL.Models;
 using Microsoft.AspNetCore.Http;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 
 namespace JakupovicNL.Controllers
 {
@@ -30,10 +31,12 @@ namespace JakupovicNL.Controllers
             return View();
         }
 
+		[ValidateRecaptcha]
         [HttpPost]
         public async Task<IActionResult> EmailForm(EmailForm form)
         {
             if(!ModelState.IsValid) {
+				// Check for invalid Recaptcha and if so, return anti robot page?
                 return View("EmailForm", form);
             }
 

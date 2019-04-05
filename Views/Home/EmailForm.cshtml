@@ -3,6 +3,7 @@
 }
 
 @model JakupovicNL.Models.EmailForm
+@using PaulMiami.AspNetCore.Mvc.Recaptcha
 
 <div>
 	<div class="nes-container with-title is-centered">
@@ -52,6 +53,13 @@
 					</td>
 				</tr>
 				<tr>
+					<td>And to prevent robots ordering consoles:</td>
+					<td>
+						<recaptcha/>
+						<span class="text-danger" id="recaptchaErrorMessage"></span>
+					</td>
+				</tr>
+				<tr>
 					<td colspan="2" align="center">
 						<input class="nes-btn" type="submit" value="Send!"/>
 						<!-- Add with TypeScript? -->
@@ -65,3 +73,7 @@
 		</table>
 	</div>
 </div>
+
+@section Scripts {
+	<recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+}

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 
 namespace JakupovicNL
 {
@@ -33,6 +34,11 @@ namespace JakupovicNL
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 			services.AddScoped<IMailer, Mailer>();
+			services.AddRecaptcha(new RecaptchaOptions
+			{
+				SiteKey = Configuration["Recaptcha:SiteKey"],
+				SecretKey = Configuration["Recaptcha:SecretKey"]
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
