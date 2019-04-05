@@ -1,47 +1,67 @@
 ﻿@{
-    ViewData["Title"] = "Message me!";
+    ViewData["Title"] = "Controller acquired!";
 }
 
 @model JakupovicNL.Models.EmailForm
 
 <div>
-    <div class="text-center">
-        <h1 class="display-4">Message me!</h1>
-    </div>
-    <table width=100% height=100% cellpadding="40">
-        <form enctype="multipart/form-data"
-            asp-controller="Home"
-            asp-action="EmailForm"
-            method="POST">
-            <tr>
-                <td colspan="2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </td>
-            </tr>
-            <tr>
-                <td width="30%"><label asp-for="Name"></label></td>
-                <td width="70%">
-                    <input asp-for="Name" type="text"/>
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </td>
-            </tr>
-            <tr>
-                <td width="30%"><label asp-for="EmailAddress"></label></td>
-                <td width="70%">
-                    <input asp-for="EmailAddress" type="text"/>
-                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                </td>
-            </tr>
-            <tr>
-                <td width="30%"><label asp-for="Message"></label></td>
-                <td width="70%">
-                    <input asp-for="Message" type="text"/>
-                    <span asp-validation-for="Message" class="text-danger"></span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Send!"/></td>
-            </tr>
-        </form>
-    </table>
+	<div class="nes-container with-title is-centered">
+		<p class="title">Controller acquired!</p>
+		<table width=100% height=100% cellpadding="40">
+			<form enctype="multipart/form-data"
+				asp-controller="Home"
+				asp-action="EmailForm"
+				method="POST">
+				<tr>
+					<td colspan="2" style="text-align:center">
+						But no console to plug it into..
+						<br/><br/>
+						Tell me where to send your console:
+					</td>
+
+				</tr>
+				<tr>
+					<td width="30%"><label asp-for="Name"></label></td>
+					<td width="70%">
+						<input asp-for="Name" type="text" id="name_field" class="nes-input"/>
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><label asp-for="EmailAddress"></label></td>
+					<td width="70%">
+						<input asp-for="EmailAddress" type="text" id="name_field" class="nes-input"/>
+						<span asp-validation-for="EmailAddress" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><label asp-for="Console"></label></td>
+					<td><div class="nes-select">
+						<select asp-for="Console">
+							<option disabled selected hidden>Select..</option>
+							<option value="NES">Nintendo Entertainment System</option>
+							<option value="SNES">Super Nintendo Entertainment System</option>
+							<option value="GBASP">GameBoy Advance Special</option>
+						</select>
+					</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><label asp-for="Message"></label></td>
+					<td width="70%">
+						<textarea asp-for="Message" id="textarea_field" class="nes-textarea"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input class="nes-btn" type="submit" value="Send!"/>
+						<!-- Add with TypeScript? -->
+						<!-- On click, add to class: "is-disabled" -->
+						<!-- Then load the progress bar for 3 seconds -->
+						<!-- On 100% turn progress bar green (add to class: "is-success") -->
+						<!-- And make button green with 'Success' text (add to class: "is-success") -->
+					</td>
+				</tr>
+			</form>
+		</table>
+	</div>
 </div>
