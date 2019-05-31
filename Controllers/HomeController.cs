@@ -36,8 +36,7 @@ namespace JakupovicNL.Controllers
         public async Task<IActionResult> EmailForm(EmailForm form)
         {
             if(!ModelState.IsValid) {
-				// Check for invalid Recaptcha and if so, return anti robot page?
-                return View("EmailForm", form);
+                return View("Oops");
             }
 
             form.Id = Guid.NewGuid();
